@@ -1,21 +1,19 @@
 # Ex.No:4(A) EXCEPTION HANDLING
 
 ## QUESTION:
-If an Integer object is set to null, and you attempt to call .toString() on it, what happens? How can you prevent your code from throwing an exception in such cases?
-
+You wrote a program that stores some input strings into a String array and prints each string in uppercase.
+However, you're getting a NullPointerException.
+What should you check in your array before calling .toUpperCase() on a element?
 
 ## AIM:
-
-To write a Java program to demonstrate NullPointerException when calling .toString() on a null Integer object and to handle the exception using try-catch.
+To handle a NullPointerException when performing operations on a null string in Java.
 
 ## ALGORITHM :
-1.	Start the program.
-2.	Import the necessary package 'java.util'
-3.	Read an integer value from the user.
-4. Assign null if the user enters 0 (or a specific case).
-5. Try to call .toString() method on the Integer object.
-6. Catch the NullPointerException and display a meaningful message.
-7. Display output and end the program.
+1.	Read a string input from the user.
+2.	If the input is "null", assign null to the variable.
+3.	Try converting the string to uppercase using toUpperCase().
+4.	Catch and handle the NullPointerException if the string is null.
+5.	Print "Null element" in case of exception.
 
 ## PROGRAM:
  ```
@@ -30,37 +28,28 @@ RegisterNumber:212223230188
 ```
 import java.util.Scanner;
 
-public class NullCheck
-{
-    public static void main(String[] args) 
-    {
+public class NullPointerArrayExample {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Integer num = sc.nextInt(); 
-        try 
-        {
-            if (num == 0) 
-            {
-                num = null;
-            }
-            System.out.println(num.toString());
 
-        } 
-        catch (NullPointerException e) 
-        {
-            System.out.println("Null Integer");
+        String input = sc.next();
+        String str = input.equalsIgnoreCase("null") ? null : input;
+
+        try {
+            System.out.println(str.toUpperCase());
+        } catch (NullPointerException e) {
+            System.out.println("Null element");
         }
+
+        sc.close();
     }
 }
 ```
 
-
-
-
-
-
 ## OUTPUT:
-![java41](https://github.com/ABINAYA-27-76/19AI307_ODD-25-26-/blob/9322907efbe6666ef88acb6049076b422ed172f1/19AI307_JAVA(25-26)/Module-04/DAY-1/java41.png)
-
+<img width="1266" height="354" alt="image" src="https://github.com/user-attachments/assets/ca3d287f-7bcc-4852-9515-a3ff25df30a1" />
 
 ## RESULT:
-Thus, the program demonstrates that calling .toString() on a null object causes a NullPointerException, and the exception can be prevented using a try-catch block.
+The program successfully detects and handles NullPointerException by displaying "Null element" when the input is null.
+
+
